@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
+import  { useState,useEffect  } from'react';
 
 const Container = styled.div`
   width: 100vw;
@@ -58,13 +59,44 @@ const Link = styled.a`
 `;
 
 const Login = () => {
+  const [userName,setUserName] =useState('');
+  const [password,setPassword] =useState('');
+
+  const userLogIn =(e) =>{
+    e.preventDefault();
+    if(userName ==='' || password ===''){
+      alert("Fields can't be empty");
+    }else {
+      const result =fetchUser();
+      result.then(function(v){
+        const userPassword =v[0].password;
+        if (userPassword !== password) {
+          alert(`${userName} password is incorrect!`);
+        }else {
+          // route the user
+          alert(`Hi ${userName}! `);
+        }
+            })
+    }
+  }
+
+  // Fetch
+ const fetchUser = async () => {
+   const res = await fetch(`http://localhost:5000/users?userName=${userName}`)
+   const data = await res.json()
+   return data
+ }
+
+
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
+        <Form onSubmit={userLogIn}>
+          <Input placeholder="username" value={userName}
+          onChange={(e) => setUserName(e.target.value)}/>
+          <Input type="password" placeholder="password" value={password}
+          onChange={(e) => setPassword(e.target.value)} />
           <Button>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>

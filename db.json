@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Isak",
+      "lastName": "Sayyed",
+      "userName": "isaksayyed",
+      "email": "isaksayyed@isak.com",
+      "password": "isak",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Sam",
+      "lastName": "Pat",
+      "userName": "sampat",
+      "email": "sampat@pat.com",
+      "password": "sam",
+      "role": "user"
+    },
+
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
