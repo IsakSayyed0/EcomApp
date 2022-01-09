@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
 import  { useState,useEffect  } from'react';
+import { BrowserRouter as Router, Route, Routes,  Link as RouteLink} from 'react-router-dom';
+import Register from './Register';
 
 const Container = styled.div`
   width: 100vw;
@@ -89,7 +91,10 @@ const Login = () => {
 
 
   return (
+    <Router>
+
     <Container>
+
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form onSubmit={userLogIn}>
@@ -99,10 +104,15 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)} />
           <Button>LOGIN</Button>
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <Link><RouteLink to={'/register'}>CREATE A NEW ACCOUNT</RouteLink></Link>
         </Form>
       </Wrapper>
+
     </Container>
+    <Routes>
+    <Route path='/register' element={<Register />} />
+    </Routes>
+    </Router>
   );
 };
 

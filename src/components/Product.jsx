@@ -67,7 +67,7 @@ const Icon = styled.div`
 `;
 
 
-const Product = ({item}) => {
+const Product = ({item,onClick}) => {
   return (
     <Container>
          <Circle />
@@ -77,7 +77,7 @@ const Product = ({item}) => {
              <ShoppingCartOutlined />
            </Icon>
            <Icon>
-             <SearchOutlined />
+             <SearchOutlined onClick={onClick}/>
            </Icon>
            <Icon>
              <FavoriteBorderOutlined />
